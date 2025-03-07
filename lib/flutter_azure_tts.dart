@@ -1,6 +1,7 @@
 library flutter_azure_tts;
 
 import 'package:flutter_azure_tts/src/audio/audio_responses.dart';
+import 'package:flutter_azure_tts/src/audio/audio_streamed_responses.dart' as streamed;
 import 'package:flutter_azure_tts/src/tts/tts.dart';
 import 'package:flutter_azure_tts/src/tts/tts_params.dart';
 import 'package:flutter_azure_tts/src/voices/voices.dart';
@@ -62,5 +63,9 @@ class FlutterAzureTts {
   ///Throws an [AzureException] if something goes wrong.
   static Future<AudioSuccess> getTts(TtsParams params) async {
     return Tts.getTts(params);
+  }
+
+  static Future<streamed.AudioSuccess> getStreamedTts(TtsParams params) async {
+    return Tts.getStreamedTts(params);
   }
 }

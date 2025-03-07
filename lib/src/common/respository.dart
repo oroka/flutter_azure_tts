@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter_azure_tts/src/audio/audio.dart';
 import 'package:flutter_azure_tts/src/audio/audio_handler.dart';
+import 'package:flutter_azure_tts/src/audio/audio_streamed_responses.dart'
+    as streamed;
 import 'package:flutter_azure_tts/src/auth/auth.dart';
 import 'package:flutter_azure_tts/src/auth/auth_handler.dart';
 import 'package:flutter_azure_tts/src/auth/auth_token.dart';
@@ -50,6 +52,11 @@ class Repository {
   Future<AudioSuccess> getTts(TtsParams ttsParams) async {
     await assureTokenIsValid();
     return await audioHandler.getAudio(ttsParams);
+  }
+
+  Future<streamed.AudioSuccess> getStreamedTts(TtsParams ttsParams) async {
+    await assureTokenIsValid();
+    return audioHandler.getAudioStream(ttsParams);
   }
 
   ///Checks if there is a valid token.

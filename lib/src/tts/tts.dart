@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_azure_tts/flutter_azure_tts.dart';
 import 'package:flutter_azure_tts/src/audio/audio_handler.dart';
+import 'package:flutter_azure_tts/src/audio/audio_streamed_responses.dart' as streamed;
 import 'package:flutter_azure_tts/src/auth/auth_client.dart';
 import 'package:flutter_azure_tts/src/auth/auth_handler.dart';
 import 'package:flutter_azure_tts/src/auth/auth_response_mapper.dart';
@@ -59,6 +60,10 @@ class Tts {
   ///
   static Future<AudioSuccess> getTts(TtsParams ttsParams) async {
     return repo.getTts(ttsParams);
+  }
+
+  static Future<streamed.AudioSuccess> getStreamedTts(TtsParams ttsParams) async {
+    return repo.getStreamedTts(ttsParams);
   }
 
   static void _init(String region, String subscriptionKey,
